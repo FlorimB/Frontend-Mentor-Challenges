@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Semi+Condensed&family=Big+Shoulders+Display&family=Fraunces:opsz@9..144&family=Inter&family=Karla&family=Kumbh+Sans&family=Lexend+Deca&family=Montserrat&family=Open+Sans&family=Outfit&family=Public+Sans&family=Raleway&family=Red+Hat+Display&family=Rubik+Bubbles&display=swap');
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+    --veryDarkBlue: hsl(234, 12%, 34%);
+    --grayIshBlue: hsl(229, 6%, 66%);
+    --veryLightGray: hsl(0, 0%, 98%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+    background-color: var(--very);
+}
+
+.top-side {
+    width: 51%;
+    margin: 5rem auto 3rem;
+}
+
+.top-side > * {
+    text-align: center;
+}
+
+.top-side h1 {
+    font-size: 38px;
+}
+
+
+.top-side p {
+    width: 55%;
+    margin: 0 auto;
+    font-size: 17px;
+    padding-top: 1rem;
+}
+.top-side .first-title {
+    color: var(--veryDarkBlue);
+    font-weight: lighter;
+    font-size: 38px;
+    font-weight: lighter;
+}
+
+.top-side .second-title {
+    color: var(--veryDarkBlue);
+    font-weight: 600;
+}
+
+.top-side .text {
+    color: var(--grayIshBlue);
+}
+
+.bottom-side {
+    max-width: 1200px;
+    margin: 5rem auto 2rem;
+    padding: 0 .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    width: 375px;
+    box-shadow: 0px 5px 25px var(--grayIshBlue);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+
+.super-visor {
+    border-top: 4px solid var(--cyan);
+}
+
+.team-builder {
+    border-top: 4px solid var(--red);
+    margin-bottom: 2.4rem;
+}
+
+.karma {
+    border-top: 4px solid var(--orange);
+}
+
+.calculator {
+    border-top: 4px solid var(--blue);
+}
+
+.card-title {
+    color: var(--veryDarkBlue);
+    font-size: 1.4rem;
+}
+
+.card-text {
+    width: 90%;
+    color: var(--grayIshBlue);
+}
+
+.card-icon {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media(max-width: 1230px) {
+
+    .top-side {
+        width: 95%;
+        margin: 2rem auto;
+    }
+
+    .first-title,
+    .second-title {
+        font-size: 24px !important;
+    }
+
+    .top-side .text {
+        width: 50%;
+    }
+
+    .bottom-side {
+        flex-direction: column;
+    }
+
+    .card {
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media(max-width:473px) {
+    .top-side {
+        margin: 1rem auto;
+        width: 100%;
+    }
+
+    .top-side > * {
+        width: 100%;
+    }
+
+    .first-title,
+    .second-title {
+        font-size: 18px !important;
+    }
+
+    .top-side .text {
+        font-size: 15px;
+    }
+}
