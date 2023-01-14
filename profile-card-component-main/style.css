@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Semi+Condensed&family=Big+Shoulders+Display&family=Fraunces:opsz@9..144&family=Inter&family=Karla&family=Kumbh+Sans&family=Lexend+Deca&family=Montserrat&family=Open+Sans&family=Outfit&family=Public+Sans&family=Raleway&family=Red+Hat+Display&family=Rubik+Bubbles&display=swap');
+:root {
+ --darkCyan: hsl(185, 75%, 39%);
+ --veryDarkDestaurated:  hsl(229, 23%, 23%);
+ --darkGrayIshBlue: hsl(227, 10%, 46%);
+ --darkGray: hsl(0, 0%, 59%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: var(--darkCyan);
+    background-image: url(./images/bg-pattern-top.svg);
+    background-repeat: no-repeat;
+    background-position: top -30rem left -10rem;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-image: url(./images/bg-pattern-bottom.svg);
+    background-repeat: no-repeat;
+    background-position: bottom -30rem right -10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    max-width: 370px;
+    background-color: #fff;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 1rem;
+}
+
+.card-header,
+.card-header img {
+    border-radius: 20px 20px 0 0 ;
+}
+
+.card-profile {
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+
+.card-profile img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.card-body {
+    width: 70%;
+    margin: 2rem auto;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card-name,
+.card-text {
+    text-align: center;
+}
+
+.card-name {
+    padding-bottom: .7rem;
+}
+
+.card-name span {
+    padding-left: 6px;
+}
+
+.card-name span,
+.card-text{
+    
+    color: var(--darkGray);
+    font-weight: 400;
+}
+
+.card-footer {
+    border-top: 1px solid rgb(216, 215, 215);
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem .5rem;
+}
+
+.followers,
+.likes,
+.photos {
+    display: flex;
+    flex-direction: column;
+}
+
+.followers span,
+.likes span,
+.photos span{
+text-align: center;
+}
+
+.followers span:first-of-type,
+.likes span:first-of-type,
+.photos span:first-of-type {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--veryDarkDestaurated);
+}
+
+.followers span:last-of-type,
+.likes span:last-of-type,
+.photos span:last-of-type {
+    font-size: 14px;
+    color: var(--darkGray);
+}
+
+@media(max-width:768px) { 
+    body {
+        background-position: top -5rem left -10rem;
+        background-size: 450px;
+    }
+
+    .container {
+        background-position: bottom -5rem right -10rem;
+        background-size: 450px;
+    }
+}
