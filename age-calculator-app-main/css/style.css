@@ -1,0 +1,163 @@
+:root {
+    --Purple: hsl(259, 100%, 65%);
+    --Light-red: hsl(0, 100%, 67%);
+    --White: hsl(0, 0%, 100%);
+    --Off-white: hsl(0, 0%, 94%);
+    --Light-grey: hsl(0, 0%, 86%);
+    --Smokey-grey: hsl(0, 1%, 44%);
+    --Off-black: hsl(0, 0%, 8%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--Off-white);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: var(--White);
+    width: 700px;
+    max-width: 750px;
+    min-width: 355px;
+    padding: 4rem 3rem;
+    border-radius: 20px 20px 170px 20px;
+}
+
+.form-container {
+    display: flex;
+
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+label {
+    margin-bottom: .5rem;
+    color: var(--Smokey-grey);
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.day-input,
+.month-input,
+.year-input {
+    height: 60px;
+    margin-bottom: .5rem;
+    border: 1px solid var(--Light-grey);
+    border-radius: 10px 5px;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.error {
+    color: var(--Light-red);
+    font-weight: 500;
+    font-size: 13px;
+    font-style: italic;
+    display: none;
+}
+
+.label-error {
+    color: var(--Light-red) !important;
+}
+
+.day-input,
+.month-input {
+    margin-right: 1.5rem;
+}
+
+.day-input:focus,
+.month-input:focus,
+.year-input:focus {
+    outline: 1px solid var(--Purple);
+}
+
+.with-header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.line {
+    width: 90%;
+}
+
+.line hr {
+    border: 1px solid var(--Light-grey);
+}
+
+.btn-arrow {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+    background: var(--Off-black);
+    transition: background .2s ease-in-out;
+}
+
+.btn-arrow:hover {
+    background: var(--Purple);
+}
+
+
+.years,
+.months,
+.days {
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+#years-number,
+#months-number,
+#days-number {
+    font-size: 65px !important;
+    color: var(--Purple);
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 400px;
+    }
+
+    .form-group {
+        width: 100px;
+    }
+
+    input {
+        font-size: 20px !important;
+    }
+
+    .line {
+        width: 100%;
+    }
+
+    .btn-arrow {
+        position: relative;
+        left: -50%;
+        transform: translateX(50%);
+        width: 100px;
+    }
+
+}
+
+
