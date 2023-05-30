@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Barlow&family=Barlow+Semi+Condensed&family=Big+Shoulders+Display&family=Fraunces:opsz@9..144&family=Inter&family=Karla&family=Kumbh+Sans&family=Lato:wght@300&family=League+Spartan&family=Lexend+Deca&family=Montserrat&family=Open+Sans&family=Outfit&family=Public+Sans&family=Raleway&family=Red+Hat+Display&family=Roboto:wght@300;400&family=Rubik+Bubbles&family=Space+Mono&display=swap"
+          rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="starter-code/assets/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/style.css">
+    <title>Frontend Mentor | GitHub user search app</title>
+</head>
+<body>
+
+<div class="container">
+  <header>
+      <div class="head">
+        <div class="slogan">devfinder</div>
+        <div class="color-mode">
+          <button class="btn light--mode">
+            LIGHT
+            <img src="./starter-code/assets/icon-sun.svg" alt="Sun Icon">
+          </button>
+          <button class="btn dark--mode">
+            DARK
+            <img src="./starter-code/assets/icon-moon.svg" alt="Moon Icon">
+          </button>
+        </div>
+      </div>
+  </header>
+
+  <div class="search">
+    <div class="left-side">
+      <img src="./starter-code/assets/icon-search.svg" alt="SearchIcon" class="search-icon">
+      <input type="text" class="search-input" id="search-input" placeholder="Search Github Username..">
+    </div>
+    <div class="right-side">
+      <span class="if-error">No Result</span>
+      <button class="btn btn-primary">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="result">
+      <div class="top-side">
+        <div class="img-container">
+
+        </div>
+
+        <div class="name-joined">
+          <div class="name">
+            <h1 class="full-name">Github Name</h1>
+            <p class="username">@username</p>
+          </div>
+          <div class="joined">
+            Joined 21 Jan 2021
+          </div>
+        </div>
+        <div class="bio">
+          Github Bio
+        </div>
+      </div>
+    <div class="bottom-side">
+      <div class="facts">
+        <div class="repo">
+          <div class="repos">Repos</div>
+          <div class="repo-total">0</div>
+        </div>
+        <div class="followers">
+          <div class="follower">Followers</div>
+          <div class="follower-total">0</div>
+        </div>
+        <div class="followings">
+          <div class="following">Followings</div>
+          <div class="following-total">0</div>
+        </div>
+      </div>
+      <div class="social">
+        <div class="location">
+          <img src="./starter-code/assets/icon-location.svg" alt="Location Icon">
+          <span class="location-result">Location</span>
+        </div>
+        <div class="twitter">
+          <img src="./starter-code/assets/icon-twitter.svg" alt="Twitter Icon">
+          <span class="twitter-result">Twitter</span>
+        </div>
+        <div class="website">
+          <img src="./starter-code/assets/icon-website.svg" alt="Website Icon">
+          <span class="website-result">Website</span>
+        </div>
+        <div class="company">
+          <img src="./starter-code/assets/icon-company.svg" alt="Company Icon">
+          <span class="company-result">Company</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./js/App.js"></script>
+</body>
+</html>
