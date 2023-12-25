@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Frontend Mentor | FAQ accordion</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+    * {
+      font-family: 'Work Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#F8EEFF]">
+
+  <div class="h-[320px] bg-[url('./assets/images/background-pattern-desktop.svg')] bg-center bg-cover">
+    <div x-data="faq" class="absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[50%] w-[600px] max-w-[600px] bg-white shadow rounded-2xl p-10">
+      <div class="flex items-center gap-6">
+        <img src="./assets/images/icon-star.svg" alt="Star Icon">
+        <h1 class="text-[56px] font-bold">FAQs</h1>
+      </div>
+      <template x-for="faq, index in faqs">
+        <div class="mt-6">
+          <div class="flex justify-between items-center py-2 cursor-pointer" @click="toggle(index)">
+            <p class="text-lg font-semibold" x-text="faq.question"></p>
+            <img :src="faq.open == true ? './assets/images/icon-minus.svg' : './assets/images/icon-plus.svg'" :alt="faq.open == true ? 'Minus Icon' : 'Plus Icon">
+          </div>
+          <div x-show="expand(index)" x-collapse>
+            <p class="text-[#8B6990]" x-text="faq.answer"></p>
+          </div>
+      </div>
+      </template>
+    </div>
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+
+  <!-- FAQs
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   -->
+
+</body>
+</html>
