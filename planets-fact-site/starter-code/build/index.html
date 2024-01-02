@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;500;600;700&family=League+Spartan:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Antonio", sans-serif;
+      }
+
+      * {
+        letter-spacing: 2px;
+        text-wrap: nowrap;
+      }
+
+      .font-spartan {
+        font-family: "League Spartan", sans-serif;
+      }
+    </style>
+    <title>Frontend Mentor | Planets fact site</title>
+  </head>
+  <body
+    class="bg-[#070724] bg-[url('assets/images/background-stars.svg')] text-white"
+  >
+    <div id="app">
+      <nav
+        class="px-8 py-6 flex gap-12 justify-between items-center border-b border-white border-opacity-20 md:items-center md:flex-col lg:flex-row"
+      >
+        <a
+          :href="planets[currentPage].url"
+          @click.prevent="currentPage = 0"
+          class="text-[28px] uppercase"
+          >The Planets</a
+        >
+        <div
+          class="md:flex pr-10 md:pr-0"
+          ref="navbar"
+          :class="{ 'hidden': !active, 'fixed w-full h-screen z-30 bg-[#070724] top-[100px] left-0 flex': active }"
+        >
+          <div class="flex w-full flex-col md:flex-row">
+            <a
+              v-for="(planet, index) in planets"
+              :key="index"
+              :href="planet.url"
+              class="text-white mx-4 flex items-center justify-between w-full border-b border-white border-opacity-20 md:border-none"
+              :class="{ '': !active, 'py-4 px-8': active }"
+              @click.prevent="currentPage = index; active = false"
+              :title="`This link sends you to the ${planet.title} page`"
+            >
+              <div class="flex items-center gap-5">
+                <span
+                  class="w-5 h-5 rounded-full md:hidden"
+                  :class="`bg-[${planet.background}]`"
+                >
+                </span>
+                {{planet.title }}
+              </div>
+              <span class="opacity-50 block md:hidden"> > </span>
+            </a>
+          </div>
+        </div>
+
+        <button
+          class="block md:hidden"
+          @click="toggleNavbar"
+          :class="{'opacity-30': active == true}"
+        >
+          <img
+            src="./assets/images/icon-hamburger.svg"
+            alt="Hamburger Menu Icon"
+          />
+        </button>
+      </nav>
+      <div
+        class="flex items-center gap-12 justify-around border-b border-white border-opacity-20 md:hidden"
+      >
+        <button
+          @click="changeBackground(0)"
+          class="uppercase py-5"
+          :style="{ 
+            borderBottomWidth: isBackgroundChanged[0] ? '4px' : '', 
+            borderBottomColor: isBackgroundChanged[0] ? planets[currentPage].background : '' 
+          }"
+        >
+          <span class="opacity-50">Overview</span>
+        </button>
+        <button
+          @click="changeBackground(1)"
+          class="uppercase py-5"
+          :style="{ 
+            borderBottomWidth: isBackgroundChanged[1] ? '4px' : '', 
+            borderBottomColor: isBackgroundChanged[1] ? planets[currentPage].background : '' 
+          }"
+        >
+          <span class="opacity-50">Structure</span>
+        </button>
+        <button
+          @click="changeBackground(2)"
+          class="uppercase py-5"
+          :style="{ 
+            borderBottomWidth: isBackgroundChanged[2] ? '4px' : '', 
+            borderBottomColor: isBackgroundChanged[2] ? planets[currentPage].background : '' 
+          }"
+        >
+          <span class="opacity-50">Surface</span>
+        </button>
+      </div>
+
+      <div
+        class="container mx-auto grid gap-10 px-4 place-items-center h-full py-20 lg:grid-cols-2"
+      >
+        <div class="grid place-items-center">
+          <img :src="checkImage" class="w-[111px] md:w-[184px] lg:w-[290px]" />
+          <template v-if="isBackgroundChanged[2]">
+            <img
+              :src="planets[currentPage].logo[2].surfaceGeology"
+              alt="Surface Geology"
+              class="w-[158px] h-[185px] absolute top-1/2 hidden lg:block"
+            />
+          </template>
+        </div>
+
+        <div
+          class="w-full flex flex-row justify-between gap-8 md:place-self-stretch lg:place-self-center lg:flex-col lg:row-start-1 lg:col-start-2 lg:max-w-[350px]"
+        >
+          <div class="flex flex-col gap-4">
+            <h2
+              class="text-center text-[40px] uppercase md:text-5xl md:text-left lg:text-[88px]"
+            >
+              {{ planets[currentPage].title }}
+            </h2>
+            <p
+              class="text-center text-xs text-wrap md:text-sm font-spartan md:text-left"
+            >
+              {{ checkText }}
+            </p>
+            <!-- Wikipedia Link -->
+            <div
+              class="flex items-center justify-center gap-4 md:justify-start"
+            >
+              <span class="opacity-30 text-xs font-spartan">Source</span>
+              <a
+                :href="currentTextLink"
+                class="flex items-center underline gap-2"
+                target="_blank"
+              >
+                <span class="text-sm font-spartan opacity-50">Wikipedia</span>
+                <img src="./assets/images/icon-source.svg" />
+              </a>
+            </div>
+            <!-- Wikipedia Link -->
+          </div>
+          <div class="hidden w-full gap-4 md:flex md:flex-col">
+            <button
+              class="w-full h-10 border border-white border-opacity-50 text-start px-6 font-bold text-[9px] flex items-center gap-4 uppercase font-spartan hover:bg-[#D8D8D8] hover:bg-opacity-30"
+              @click="changeBackground(0)"
+              :style="{ backgroundColor: isBackgroundChanged[0] ? planets[currentPage].background : '' }"
+            >
+              <span class="font-bold text-[9px] opacity-50">01</span> Overview
+            </button>
+            <button
+              class="w-full h-10 border border-white border-opacity-50 text-start px-6 font-bold text-[9px] flex items-center gap-4 uppercase font-spartan hover:bg-[#D8D8D8] hover:bg-opacity-30"
+              @click="changeBackground(1)"
+              :style="{ backgroundColor: isBackgroundChanged[1] ? planets[currentPage].background : '' }"
+            >
+              <span class="font-bold text-[9px] opacity-50">02</span> Internal
+              Structure
+            </button>
+            <button
+              class="w-full h-10 border border-white border-opacity-50 text-start px-6 font-bold text-[9px] flex items-center gap-4 uppercase font-spartan hover:bg-[#D8D8D8] hover:bg-opacity-30"
+              @click="changeBackground(2)"
+              :style="{ backgroundColor: isBackgroundChanged[2] ? planets[currentPage].background : '' }"
+            >
+              <span class="font-bold text-[9px] opacity-50">03</span> Surface
+              Geology
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer
+        class="pt-10 px-4 container mx-auto flex flex-col md:flex-row justify-center gap-4 md:gap-12"
+      >
+        <div
+          v-for="info in planets[currentPage].extraInformation"
+          class="p-5 border flex flex-row gap-4 justify-between items-center border-white border-opacity-20 w-full md:flex-col md:items-start md:justify-start lg:py-8"
+        >
+          <p class="font-bold text-[11px] uppercase font-spartan opacity-50">
+            {{ info.title}}
+          </p>
+          <p class="uppercase text-xl md:text-2xl lg:text-[40px]">
+            {{ info.information}}
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module">
+      import data from "./assets/js/data.js";
+      Vue.createApp({
+        data() {
+          return {
+            planets: data,
+            currentPage: 0,
+            isBackgroundChanged: [true, false, false],
+            active: false,
+          };
+        },
+        methods: {
+          changeBackground(index) {
+            this.isBackgroundChanged = this.isBackgroundChanged.map(
+              (value, i) => i === index
+            );
+          },
+          toggleNavbar() {
+            this.active = !this.active;
+          },
+        },
+        computed: {
+          checkText() {
+            if (this.isBackgroundChanged[0] == true) {
+              return this.planets[this.currentPage].text[0].overview;
+            } else if (this.isBackgroundChanged[1] == true) {
+              return this.planets[this.currentPage].text[1].internalStructure;
+            } else {
+              return this.planets[this.currentPage].text[2].surfaceGeology;
+            }
+          },
+          checkImage() {
+            if (this.isBackgroundChanged[0]) {
+              return this.planets[this.currentPage].logo[0].overview;
+            } else if (this.isBackgroundChanged[1]) {
+              return this.planets[this.currentPage].logo[1].internalStructure;
+            } else {
+              return this.planets[this.currentPage].logo[0].overview;
+            }
+          },
+          currentTextLink() {
+            if (this.isBackgroundChanged[0]) {
+              return this.planets[this.currentPage].text[0].link;
+            } else if (this.isBackgroundChanged[1]) {
+              return this.planets[this.currentPage].text[1].link;
+            } else {
+              return this.planets[this.currentPage].text[2].link;
+            }
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
